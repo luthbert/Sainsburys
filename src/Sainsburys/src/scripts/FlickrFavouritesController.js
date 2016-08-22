@@ -1,4 +1,5 @@
-﻿var app = require("./app");
+﻿'use strict'
+var app = require("./app");
 
 app.controller("flickrFavouritesCtrl", ["$scope", "$window", "$sessionStorage", function ($scope, $window, $sessionStorage) {
 

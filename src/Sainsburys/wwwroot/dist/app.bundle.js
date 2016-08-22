@@ -50,6 +50,7 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict'
 	var app = __webpack_require__(2);
 	
 	app.controller("flickrFavouritesCtrl", ["$scope", "$window", "$sessionStorage", function ($scope, $window, $sessionStorage) {
