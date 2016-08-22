@@ -1,0 +1,248 @@
+﻿$brand-primary: #f90;
+$brand-secondary: #910048;
+$background-primary: #fff;
+$background-secondary: #F4F4F4;
+$background-footer: #555;
+$font-heading: MaryAnn,"Times New Roman",Times,serif;
+$font-primary: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$text-color: #3D3D3D;
+$base-font-size: 19px;
+
+@font-face{font-family:MaryAnn;src:url(../Assets/mary_ann_web-regular.woff)}
+@font-face{font-family:MaryAnn;src:url(../Assets/mary_ann_web-medium.woff);font-weight:500;font-style:normal}
+@font-face{font-family:MaryAnn;src:url(../Assets/mary_ann_web-bold.woff);font-weight:700;font-style:normal}
+@font-face{font-family:MaryAnn;src:url(../Assets/mary_ann_web-light.woff);font-weight:100;font-style:normal}
+
+body {
+  position: absolute;
+  font-family: $font-primary;
+  color: #3D3D3D;
+  font-size: $base-font-size;
+  background: $background-primary;
+  margin: 0;
+  padding: 10px 10px 0;
+}
+#Masthead{
+    border-bottom: 1px solid $brand-primary;
+    padding-bottom: 10px;
+
+    > a{
+        text-decoration: none;
+        
+        :after{
+            @extend .clear-fix;
+        }
+    }
+    h1{
+        color: $brand-primary;
+        font-weight: bold;
+        float: left;
+        margin: 0;
+    }
+    img{
+        float: left;
+        height: 55px;
+        margin-right: 10px;
+    }
+    nav{
+        clear: left;
+        width: 100px;
+        margin: auto;
+        margin-top: 25px;
+        font-family: $font-heading;
+    
+        ul{
+            display: none;
+            position: absolute;
+            background: #FFF;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 20px;
+        
+            li{
+                list-style: none;
+
+                a{
+                    color: $text-color;
+                    text-decoration: none;
+                }
+            }
+        }
+        > span{
+            width: 100px;
+            height: 40px;
+            display: block;
+            background: $brand-secondary;
+            border-radius: 20px;
+            color: #FFF;
+            font-family: $font-heading;
+            text-align: center;
+            line-height: 38px;
+        }
+        input{
+            width: 100px;
+            height: 40px;
+            display: block;
+            margin: auto;
+            margin-bottom: -40px;
+            position: relative;
+            opacity: 0;
+            cursor: pointer;
+        
+
+        }
+        input:checked ~ ul{
+            display: block;
+        }
+    }
+}
+footer{
+    background: $background-footer;
+    color: #FFF;
+    padding: 10px;
+    margin: 25px -10px 0;
+    overflow: hidden;
+
+    ul{
+        margin: 0;
+        padding: 0;
+
+        :after{
+            @extend .clear-fix;
+        }
+        li{
+            float: left;
+            list-style: none;
+            width: 33%;
+
+            a{
+                display: block;
+                margin: auto;
+                width: 16px;
+            }
+        }
+    }
+}
+h1{
+    font-family: $font-heading;
+    color: $text-color;
+    font-size: 39px;
+    font-weight: 100;
+}
+aside h1{
+    font-size: 24px;
+}
+article{
+    header{
+        margin-bottom: 10px;
+        span{
+            font-size: 16px;
+        }
+    }
+    h1{
+        margin-bottom: 0;
+    }
+}
+a, a:hover, a:visited{
+    color: $brand-primary;
+    text-decoration: underline;
+}
+img.responsive{
+    width: 100%;
+}
+.h2{
+    font-size: 24px;
+}
+.pull-right{
+    float: right;
+}
+.lg-show{
+    display: none;
+}
+
+
+.clear-fix{
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+    content: ".";
+}
+
+
+@media only screen and (min-width : 500px) {
+    .row:after{
+        display: block;
+        clear: both;
+        height: 0;
+        visibility: 0;
+        content: ".";
+    }
+    .col-lg-9{
+        width: 75%;
+        @extend .col;
+    }
+    .col-lg-3{
+        width: 25%;
+        @extend .col;
+    }
+    article{
+        padding: 10px;
+    }
+    .side-bar-item{
+        padding: 10px;
+    }
+    footer *{
+        display: none;
+        height: 40px;
+    }
+    .col{
+        float: left;
+    }
+    .lg-show{
+        display: block;
+    }
+    .sm-show{
+        display: none;
+    }
+
+    #Masthead{
+        > a{
+            float: left;
+        }
+        > ul{
+            float: right;
+            margin: 0;
+            padding: 0;
+
+            li{
+                list-style: none;
+                float: left;
+            }
+        }
+        nav{
+            width: auto;
+            margin: 0;
+            clear: both;
+            position: relative;
+            top: 10px;
+
+            span, input {
+                display: none;
+            }
+            ul{
+                position: static;
+                margin-bottom: 10px;
+                display: table !important;
+                width: 100%;
+                padding: 10px 0;
+
+                li{
+                    display: table-cell;
+                    text-align: center;
+                    width: 16.66%;
+                }
+            }
+        }
+    }
+}

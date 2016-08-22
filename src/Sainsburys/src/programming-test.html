@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html>
+<head>
+    <script type="text/javascript">
+        // This is not how I would choose to implement this but staying true to the question by preserving the code snippet.
+        var flickrItems = {
+            data: null,
+            watches: {},
+            watch: function (cb) {
+                var id = Math.random().toString();
+                this.watches[id] = cb;
+
+                return {
+                    unwatch: function () {
+                        delete this.watches[id];
+                    }
+                }
+            },
+            update: function (data) {
+                this.data = data;
+                for (id in this.watches) {
+                    this.watches[id](data);
+                }
+            }
+        }
+
+        // Note the callback has to be globally scoped
+        function cb(data) {
+            console.log(data)
+            flickrItems.update(data.items);
+        }
+
+        (function () {
+            var tags = "london";
+            var script = document.createElement("script");
+            script.src = 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=cb& tags =' + tags;
+            document.head.appendChild(script);
+        })();
+    </script>
+
+    <style type="text/css">
+        #FlickrWdgt li{
+            list-style: none;
+            float: left;
+            margin: 20px;
+            cursor: pointer;
+        }
+        #FlickrWdgt img{
+            display: block;
+            margin: 0;
+        }
+        #FlickrWdgt li.selected{
+            border: 2px dashed #0094ff;
+        }
+    </style>
+</head>
+<body ng-app="sainsburys">
+    <h1>Flickr Favourites App</h1>
+    <div ng-controller="flickrFavouritesCtrl" id="FlickrWdgt">
+        <ul>
+            <li ng-repeat="uri in favourites" ng-click="imageClick(uri)" ng-class="{'selected': selectedImages.indexOf(uri) != -1}"><img ng-src="{{uri}}" /></li>
+        </ul>
+        <ul>
+            <li ng-repeat="image in images" ng-click="imageClick(image.media.m)" ng-class="{'selected': selectedImages.indexOf(image.media.m) != -1}"><img ng-src="{{image.media.m}}" /></li>
+        </ul>
+    </div>
+</body>
+</html>
